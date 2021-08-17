@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+// import logo from "./logo.svg";
+import "./App.css";
+import UploadZone from "./UploadZone/UploadZone";
+import Preview from "./Preview/Preview";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+   const [files, setFiles] = useState([]);
+   const [originalFiles, setOriginalFiles] = useState([]);
+   const onSuccess = (uploadedFiles) => {
+      setFiles(uploadedFiles);
+   };
+
+   const onPreserve = (uploadedFiles) => {
+      setOriginalFiles(uploadedFiles);
+   };
+   console.log(originalFiles);
+   console.log("good");
+
+   console.log(files);
+
+   return (
+      <Router>
+         <div className="App">
+            {/* <UploadZone onSuccess={onSuccess} />
+         <Preview files={files} /> */}
+            <Switch>
+               <Route exact path="/" component={() => <UploadZone onSuccess={onSuccess} onPreserve={onPreserve} />} />
+               <Route path="/preview" component={() => <Preview files={files} originalFiles={originalFiles} />} />
+            </Switch>
+         </div>
+      </Router>
+   );
 }
 
 export default App;
