@@ -54,7 +54,7 @@ function Preview({ files, originalFiles }) {
       }
 
       axios
-         .post("//localhost:8000/merge", data)
+         .post("https://pdfbackend1.herokuapp.com/merge", data)
          .then((res) => {
             console.log("Success");
          })
@@ -66,7 +66,7 @@ function Preview({ files, originalFiles }) {
    };
 
    const onDownloadHandler = () => {
-      axios.get("http://localhost:8000/download", { responseType: "arraybuffer" }).then((res) => {
+      axios.get("https://pdfbackend1.herokuapp.com/download", { responseType: "arraybuffer" }).then((res) => {
          const url = window.URL.createObjectURL(new Blob([res.data], { type: "application/pdf" }));
          var link = document.createElement("a");
          link.href = url;
@@ -86,7 +86,7 @@ function Preview({ files, originalFiles }) {
                         <Draggable key={id} draggableId={"" + id} index={id}>
                            {(provided) => (
                               <img
-                                 src={`//localhost:8000/${file.filename}`}
+                                 src={`https://pdfbackend1.herokuapp.com/${file.filename}`}
                                  alt=""
                                  key={id}
                                  {...provided.draggableProps}

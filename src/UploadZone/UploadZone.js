@@ -24,7 +24,7 @@ function UploadZone({ onSuccess, onPreserve }) {
       onPreserve(files);
       // console.log(data);
       axios
-         .post("//localhost:8000/upload", data)
+         .post("https://pdfbackend1.herokuapp.com/upload", data)
          .then((res) => {
             // console.log("Success");
             onSuccess(res.data);
