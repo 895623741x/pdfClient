@@ -19,12 +19,12 @@ This repository is for the front-end, to check the repository for back-end, you 
 
 ## Uploading Images
 
-![](https://imgur.com/wnumKa5)
+![](https://imgur.com/wnumKa5.gif)
 
 ## Using React-Beautiful-DND to Adjust the Layout
 
-![](https://imgur.com/uYa6Wp9)
+![](https://imgur.com/uYa6Wp9.gif)
 
 ## Download the Converted PDF File
 
-![](https://imgur.com/s5fR5vW)
+![](https://imgur.com/s5fR5vW.gif)
