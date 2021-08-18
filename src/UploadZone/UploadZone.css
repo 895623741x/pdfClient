@@ -6,7 +6,9 @@
    padding: 120px 0px 85px 35%;
    text-align: center !important;
    margin: 0;
-   width: 100% !important;
+   width: 60% !important;
+
+   display: inline-block;
 }
 .files input:focus {
    outline: 2px dashed #92b0b3;
@@ -51,4 +53,30 @@
    font-weight: 600;
    text-transform: capitalize;
    text-align: center;
+}
+
+.submit-btn {
+   border: none;
+   border-radius: 6px;
+   color: white;
+   padding: 15px 32px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   transition: 0.3s;
+   margin: 8px;
+}
+.submit-btn {
+   display: block;
+   margin: 50px auto auto auto;
+   border-radius: 7px;
+   background-color: #54cc74;
+}
+
+.submit-btn:hover {
+   cursor: pointer;
+   background-color: #2b663b;
+   color: white;
+   transition: 0.5s;
 }

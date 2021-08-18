@@ -54,6 +54,7 @@ function Preview({ files, originalFiles }) {
       }
 
       axios
+         // .post("https://pdfbackend1.herokuapp.com/merge", data)
          .post("https://pdfbackend1.herokuapp.com/merge", data)
          .then((res) => {
             console.log("Success");
@@ -75,23 +76,54 @@ function Preview({ files, originalFiles }) {
          link.click();
       });
    };
+
+   const grid = 8;
+
+   const getItemStyle = (isDragging, draggableStyle) => ({
+      // some basic styles to make the items look a bit nicer
+      userSelect: "none",
+      padding: grid * 2,
+      margin: `0 ${grid}px 0 0`,
+
+      // change background colour if dragging
+      background: isDragging ? "lightgreen" : "grey",
+
+      // styles we need to apply on draggables
+      ...draggableStyle,
+   });
+
+   const getListStyle = (isDraggingOver) => ({
+      background: isDraggingOver ? "lightblue" : "lightgrey",
+      display: "flex",
+      padding: grid,
+      overflow: "auto",
+      height: 500,
+   });
+
    return (
       <div className="major">
          Uploaded Images
          <DragDropContext onDragEnd={handleOnDragEnd}>
-            <Droppable droppableId="images">
-               {(provided) => (
-                  <div className="container" {...provided.droppableProps} ref={provided.innerRef}>
+            <Droppable droppableId="images" direction="horizontal">
+               {(provided, snapshot) => (
+                  <div
+                     className="container"
+                     {...provided.droppableProps}
+                     ref={provided.innerRef}
+                     style={getListStyle(snapshot.isDraggingOver)}
+                  >
                      {images.map((file, id, index) => (
                         <Draggable key={id} draggableId={"" + id} index={id}>
-                           {(provided) => (
+                           {(provided, snapshot) => (
                               <img
+                                 // src={`https://pdfbackend1.herokuapp.com/${file.filename}`}
                                  src={`https://pdfbackend1.herokuapp.com/${file.filename}`}
                                  alt=""
                                  key={id}
                                  {...provided.draggableProps}
                                  ref={provided.innerRef}
                                  {...provided.dragHandleProps}
+                                 style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
                                  className="image"
                               />
                            )}
@@ -103,9 +135,13 @@ function Preview({ files, originalFiles }) {
             </Droppable>
          </DragDropContext>
          {!isMerged ? (
-            <button onClick={onMergeHandler}>merge</button>
+            <button onClick={onMergeHandler} className="merge-btn">
+               merge
+            </button>
          ) : (
-            <button onClick={onDownloadHandler}>download</button>
+            <button onClick={onDownloadHandler} className="download-btn">
+               download
+            </button>
          )}
       </div>
    );

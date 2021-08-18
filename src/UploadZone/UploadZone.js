@@ -25,26 +25,28 @@ function UploadZone({ onSuccess, onPreserve }) {
       // console.log(data);
       axios
          .post("https://pdfbackend1.herokuapp.com/upload", data)
+         // .post("http://localhost:8000/upload", data)
          .then((res) => {
-            // console.log("Success");
+            console.log("Success");
             onSuccess(res.data);
             // console.log("a ok");
             // console.log(res.data);
          })
          .catch((e) => {
-            // console.log("Error", e);
+            console.log("Error", e);
          });
       history.push("/preview");
    };
 
    return (
-      <div>
+      <div className="upload-zone">
+         <h2>JPG/PNG/JPEG to PDF</h2>
          <form method="post" action="#" id="#" onSubmit={onSubmitHandler}>
             <div className="form-group files">
-               <label>Upload Your File </label>
+               {/* <label>Upload Your File </label> */}
                <input type="file" className="form-control" multiple onChange={onChangeHandler} />
             </div>
-            <button>Submit</button>
+            <button className="submit-btn">Submit</button>
          </form>
       </div>
    );
