@@ -27,4 +27,4 @@ This repository is for the front-end, to check the repository for back-end, you 
 
 ## Download the Converted PDF File
 
-![](https://imgur.com/SstTyE2.gif)
+![](https://imgur.com/SstTyE2)
