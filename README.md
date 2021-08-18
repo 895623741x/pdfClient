@@ -2,7 +2,7 @@
 
 ## Description:
 
-JPG/PNG/JPEG to PDF Project is built to help me convert the photos that are screened to submit my math assignments during the quarantine period. I was motivated to develop this project because most of the online pdf converter platforms actually limit the number of times of converting the uploaded images into pdf files.
+This project is built to help me convert the images that are scanned to submit my math assignments during the quarantine period. I was motivated to develop this project because most of the online pdf converter platforms actually limit the number of times of converting the uploaded images into pdf files.
 
 ## Tools Used:
 
